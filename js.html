@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: bisque;
+        }
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: rgba(0,0,0,.8);
+            width: 380px;
+            height: 400px;
+            border-radius: 6px;
+        }
+        h1{
+            text-transform: capitalize;
+            text-align: center;
+            color: orangered;
+            margin-top: 70px;
+            
+        }
+        textarea{
+            width: 270px;
+            height: 120px;
+            margin-left:50px;
+            border-radius: 6px;
+            background-color: rgb(112, 236, 112);
+            padding: 6px;
+            font-size: 17px;
+
+        }
+        h2{
+            text-align: center;
+            color: bisque;
+            margin: 40px;
+
+        }
+        .btn{
+           margin-left:120px ;
+           margin-top: 30px;
+
+        }
+        button{
+            font-size: 16px;
+            width: 150px;
+            border-radius: 6px;
+            padding: 4px;
+            cursor: pointer;
+
+        }
+        .res{
+            margin-left:170px ;
+            margin-top: 30px;
+            font-size: 20px;
+            color: orange;
+        }
+        @media screen and (max-width:495px) {
+            textarea{
+                width: 230px;
+                height: 90px;
+                margin-left: 30px;
+            }
+            .container{
+                width: 310px;
+                height: 330px;
+            }
+            .btn{
+                margin-left: 75px;
+            }
+            .res{
+                margin-left: 110px;
+                margin-top: 20px;
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>Word Counter</h1>
+    <div class="container">
+        <h2>Type any sentence</h2>
+        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+        <div class="btn">
+            <button type="submit">Calculate Words</button>
+        </div>
+        <div class="res">
+            
+        </div>
+    </div>
+    <script>
+        let btn=document.querySelector('button')
+        let func=()=>{
+            // let a=[2,3,4,5,6]
+            // let ind=a.indexOf(2)
+            // a.splice(ind,1)
+            // console.log(a)
+            let text=document.querySelector('#text').value
+            // console.log(text)
+            let res=document.querySelector('.res')
+            
+            let datas=text.split(' ')
+            for(let a of datas){
+                if(a==''){
+                    let index=datas.indexOf(a)
+                    datas.splice(index,1)
+                }
+
+            }
+            // console.log(datas)
+            let count=datas.length
+            // console.log('count :',count)
+            if(count==0){
+                res.innerHTML=`No words`
+            }
+            else{
+                res.innerHTML=`${count} words`
+            }
+
+        }
+
+        btn.addEventListener('click',func)
+
+        
+    </script>
+</body>
+</html>
